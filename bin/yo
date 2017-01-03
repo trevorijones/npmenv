@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+__DIR__=$(dirname $(readlink -f $0))
+. $__DIR__/base-npm.sh
+
+yo $@
