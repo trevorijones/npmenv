@@ -20,4 +20,15 @@ npmenv/bin/init.sh
 ```bash
 npmenv/bin/npm install -g yo
 ```
+## Usage in other scripts
 
+set __NPMENV__ to point to the npmenv folder
+source $__NPMENV__/bin/base-npm.sh
+
+```bash
+ #!/usr/bin/env bash                                                     
+ __NPMENV__=<path to npm>                                                  
+ . $__NPMENV__/bin/base-npm.sh 
+ 
+ ....
+ ```
