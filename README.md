@@ -30,5 +30,6 @@ source $__NPMENV__/bin/base-npm.sh
  __NPMENV__=<path to npm>                                                  
  . $__NPMENV__/bin/base-npm.sh 
  
+ npm install -g eslint
  ....
  ```
