@@ -1,5 +1,11 @@
 # npmenv
-Setup local npm environment under a npmenv folder
+## A little help to run **npm** in the a **myfolder**
+
+Setup local npm environment under a npmenv folder. Keep it contained.
+
+## What it does?
+
+Clone nvm locally and wrap calls with `bin/npm` to install packages locally 
 
 ## clone this somewhere in you're willing to use node
 

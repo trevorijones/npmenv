@@ -2,4 +2,4 @@
 __DIR__=$(dirname $(readlink -f $0))
 . $__DIR__/_env
 
-yo $@
+node $@

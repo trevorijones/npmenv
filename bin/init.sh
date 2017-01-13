@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 __DIR__=$(dirname $(readlink -f $0))
-. $__DIR__/base-npm.sh
+. $__DIR__/_env
 
 # Node Version Manager & Node
 if [ ! -f "${NVM_DIR}/nvm.sh" ]
