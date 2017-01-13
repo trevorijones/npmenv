@@ -31,7 +31,7 @@ source $__NPMENV__/bin/_env.sh
 
 ```bash
  #!/usr/bin/env bash                                                     
- __NPMENV__=<path to npm>                                                  
+ __NPMENV__=<path to npmenv>                                                  
  . $__NPMENV__/bin/_env.sh 
  
  npm install -g eslint
