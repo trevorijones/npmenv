@@ -1,5 +1,5 @@
 # npmenv
-## A little help to run **npm** in the a **myfolder**
+## A little help to run **npm** in **myfolder**
 
 Setup local npm environment under a npmenv folder. Keep it contained.
 
