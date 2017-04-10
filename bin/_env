@@ -2,6 +2,8 @@ __BASE_DIR__=$(dirname $(dirname $(readlink -f $0)))
 
 [ -z "$__NPMENV__" ] && __NPMENV__=$__BASE_DIR__
 
+NVM_VERSION=v0.33.1
+
 # Something like v6.9.2
 [ ! -s ${__NPMENV__}/.node-version ] && echo "Empty or missing .node-version" && exit 1
 NODE_VERSION="$(cat ${__NPMENV__}/.node-version)"
