@@ -1,25 +1,47 @@
-__BASE_DIR__=$(dirname $(dirname $(readlink -f $0)))
+# Base source file
+# Sets common variables
 
-[ -z "$__NPMENV__" ] && __NPMENV__=$__BASE_DIR__
+## Sets __NPMENV__ home dir
+# this _env is located under __NPMENV__/bin
+[ -z "$__NPMENV__" ] && __NPMENV__=$(dirname $(dirname $(readlink -f $BASH_SOURCE)))
 
-NVM_VERSION=v0.33.1
+## Set the Node Version Manager (nvm)
+# falls back to hardcoded version
+NVM_VERSION=${NVM_VERSION:-v0.33.1}
 
-# Something like v6.9.2
-[ ! -s ${__NPMENV__}/.node-version ] && echo "Empty or missing .node-version" && exit 1
-NODE_VERSION="$(cat ${__NPMENV__}/.node-version)"
+## Sets NVM_DIR
+export NVM_DIR=$__NPMENV__/.nvm
 
-export NVM_DIR="${__NPMENV__}/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+## Sets the NODE_VERSION from .node-version
+# eg: v6.9.2
+if [ -z "$NODE_VERSION" ] && [ -s ${__NPMENV__}/.node-version ]
+then
+   # nvm uses NODE_VERSION
+   export NODE_VERSION="$(cat ${__NPMENV__}/.node-version)"
+fi
 
-export NODE_PATH=$NVM_DIR/versions/node/${NODE_VERSION}/lib/node_modules
+## Loads nvm
+if [ -s "$NVM_DIR/nvm.sh" ]
+then
+   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+fi
 
-export PATH=$NVM_DIR/versions/node/${NODE_VERSION}/bin:$PATH
 
-echo "-----"
-echo "|    PATH: $PATH"
-echo "|    Node: `which node`"
-echo "|     Npm: `which npm`"
-echo "|Npm root: `npm root -g`"
-echo "|     Nvm: `which nvm`"
-echo "|      Yo: `which yo`"
-echo "-----"
+## Exports NODE_PATH and PATH if NODE_VERSION is currenly installed under nvm
+if [ -n "$NODE_VERSION" ] && [ -d "$NVM_DIR/versions/node/$NODE_VERSION" ]
+then
+   export NODE_PATH=$NVM_DIR/versions/node/${NODE_VERSION}/lib/node_modules
+   export PATH=$NVM_DIR/versions/node/${NODE_VERSION}/bin:$PATH
+
+   echo "-----"
+   echo "|    PATH: $PATH"
+   echo "|    Node: `which node`"
+   echo "|     Npm: `which npm`"
+   echo "|Npm root: `npm root -g`"
+   echo "|     Nvm: `which nvm`"
+   echo "|      Yo: `which yo`"
+   echo "-----"
+else
+    echo "Misssing NODE_VERSION or nvm not installed. Call bin/init.sh first"
+fi
+
