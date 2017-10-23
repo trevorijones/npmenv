@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 __BIN__=$(dirname $(readlink -f $0))
-
 __NPMENV__=$(dirname $__BIN__)
 . $__BIN__/_env
 

@@ -1,6 +1,6 @@
 # Base source file
 # Sets common variables
-
+#
 ## Sets __NPMENV__ home dir
 # this _env is located under __NPMENV__/bin
 [ -z "$__NPMENV__" ] && __NPMENV__=$(dirname $(dirname $(readlink -f $BASH_SOURCE)))
@@ -27,14 +27,15 @@ then
 fi
 
 
-## Exports NODE_PATH and PATH if NODE_VERSION is currenly installed under nvm
+## Exports NODE_PATH if NODE_VERSION is currenly installed under nvm
 if [ -n "$NODE_VERSION" ] && [ -d "$NVM_DIR/versions/node/$NODE_VERSION" ]
 then
-   export NODE_PATH=$NVM_DIR/versions/node/${NODE_VERSION}/lib/node_modules
-   export PATH=$NVM_DIR/versions/node/${NODE_VERSION}/bin:$PATH
-
+   #NODE_DIR="$NVM_DIR/versions/node/$NODE_VERSION"
+   #export NODE_PATH="$NODE_DIR/lib/node_modules"
+   nvm use $NODE_VERSION
    echo "-----"
-   echo "|    PATH: $PATH"
+   echo $NODE_VERSION
+   echo $PATH
    echo "|    Node: `which node`"
    echo "|     Npm: `which npm`"
    echo "|Npm root: `npm root -g`"
@@ -42,6 +43,6 @@ then
    echo "|      Yo: `which yo`"
    echo "-----"
 else
-    echo "Misssing NODE_VERSION or nvm not installed. Call bin/init.sh first"
+    echo "Misssing NODE_VERSION or nvm not installed. Call bin/init.sh first" 
 fi
 

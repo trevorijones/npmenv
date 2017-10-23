@@ -11,7 +11,7 @@ fi
 
 if [ -n "$NODE_VERSION" ]
 then
-    nvm install "$NODE_VERSION"
+    nvm install "$NODE_VERSION" && echo -n "$NODE_VERSION" > $__NPMENV__/.node-version
 fi
 
 
