@@ -32,7 +32,7 @@ if [ -n "$NODE_VERSION" ] && [ -d "$NVM_DIR/versions/node/$NODE_VERSION" ]
 then
    #NODE_DIR="$NVM_DIR/versions/node/$NODE_VERSION"
    #export NODE_PATH="$NODE_DIR/lib/node_modules"
-   nvm use $NODE_VERSION
+   nvm use $NODE_VERSION && echo -n "$NODE_VERSION" > $__NPMENV__/.node-version
    echo "-----"
    echo $NODE_VERSION
    echo $PATH
