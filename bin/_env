@@ -3,7 +3,7 @@
 #
 ## Sets __NPMENV__ home dir
 # this _env is located under __NPMENV__/bin
-[ -z "$__NPMENV__" ] && __NPMENV__=$(dirname $(dirname $(readlink -f $BASH_SOURCE)))
+__NPMENV__=$(dirname $(dirname $(readlink -f $BASH_SOURCE)))
 
 ## Set the Node Version Manager (nvm)
 # falls back to hardcoded version
