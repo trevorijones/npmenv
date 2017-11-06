@@ -63,7 +63,7 @@ Clone nvm locally and wrap calls with `bin/npm` to install packages locally
 
 Setup local node environment under a npmenv/bin folder. Keep it contained.
 
-## Installing an packages
+## Installing packages
 
 Source `npmenv/bin/_env` as first step:
 
@@ -80,7 +80,7 @@ npm install -g yarn
 Then add dependencies with a --prefix ./npmenv to install to ./npmenv/bin
 
 ```bash
-yarn global add grunt --prexix ./npmenv 
+yarn global add grunt --prefix ./npmenv 
 ```
 
 
